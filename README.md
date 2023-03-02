@@ -55,7 +55,9 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Prediction Envelopes at Outlet Gage
 
-<img align="center" src="visualization/figures/figure7/figure7.png" width="50%" height="50%">
+<p align="center"
+    <img src="visualization/figures/figure7/figure7.png" width="50%" height="50%">
+</p>
 
 **Figure 7.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
 
