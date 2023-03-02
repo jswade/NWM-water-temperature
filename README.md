@@ -8,7 +8,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Model Test Catchment: H.J. Andrews Experimental Forest, OR, USA
 
-![Site Map](visualization/figures/figure1/figure1.png)
+<img src="visualization/figures/figure1/figure1.png" width="60%" height="60%">
 
 **Figure 1.** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
 
