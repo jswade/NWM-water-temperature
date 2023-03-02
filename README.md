@@ -6,11 +6,24 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ## Highlights
 
-### H.J. Andrews Experimental Forest, OR, USA: Model Test Catchment
+### Model Test Catchment: H.J. Andrews Experimental Forest, OR, USA
 
 ![Site Map](visualization/figures/figure1/figure1.png)
 
-**Figure 1** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
+**Figure 1.** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
+
+### Modeled Heat Fluxes and Associated NWM Inputs
+
+![NWM Data](visualization/figures/figure2/figure2.png)
+
+**Figure 2.** Primary atmospheric, radiative, and hydrologic heat fluxes represented in the water temperature model. Model data sources fall into four broad categories: NWM gridded forcings, NWM model outputs, NWM channel route link files, and external data unconstrained by the NWM. The color and shape of symbology indicates how each variable contributes to calculated heat fluxes in the model.
+ 
+### Approach to Estimating Groundwater Inflow Temperatures
+
+![GW Temps](visualization/figures/figure3/figure3.png)
+
+**Figure 3.** Estimated groundwater inflow temperatures for (a) WY2019 and (b) July 2019 study period at the headwaters of Mack Creek for a range of *C~AT-GW~* (air temperature scaling coefficient) values. Values of *C~AT-GW~*, closer to 0 represent relatively deeper sourcing depths while values of *C~AT-GW~* closer to 1 represent relatively shallower sourcing depths.
+
 
 
 ## Contents
