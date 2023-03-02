@@ -24,7 +24,7 @@ All scripts are written in Python. File references are relative to the GitHub re
  
 ### Approach to Estimating Groundwater Inflow Temperatures
 
-![GW Temps](visualization/figures/figure3/figure3.png)
+<img src="visualization/figures/figure3/figure3.png" width="80%" height="80%">
 
 **Figure 3.** Estimated groundwater inflow temperatures for (a) WY2019 and (b) July 2019 study period at the headwaters of Mack Creek for a range of *C<sub>AT-GW<sub>* (air temperature scaling coefficient) values. Values of *C<sub>AT-GW<sub>*, closer to 0 represent relatively deeper sourcing depths while values of *C<sub>AT-GW<sub>* closer to 1 represent relatively shallower sourcing depths.
  
