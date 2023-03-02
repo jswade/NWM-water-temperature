@@ -1,0 +1,27 @@
+DBCODE,LOCATION_CODE,KEYWORD_NAME,WEST_BOUND_COORD_decdeg,EAST_BOUND_COORD_decdeg,NORTH_BOUND_COORD_decdeg,SOUTH_BOUND_COORD_decdeg,ELEVATION_MAX_meters,ELEVATION_MIN_meters,SLOPE_percent,ASPECT_degrees
+HT004,HJA                      ,Andrews Experimental Forest (HJA)                           ,-122.261722,-122.100847,44.281964,44.197704,1631,412,NA,NA
+HT004,MCRAE                    ,McRae Creek                                                 ,-122.2085902,-122.139433,44.273116,44.233287,NA,NA,NA,NA
+HT004,WS01                     ,Andrews Watershed  1                                        ,-122.256831,-122.235813,44.208517,44.199017,1027,439,59.35,286
+HT004,WS10                     ,Andrews Watershed 10                                        ,-122.259966,-122.254439,44.220152,44.216786,679,461,58.12,250
+HT004,WS02                     ,Andrews Watershed  2                                        ,-122.243976,-122.229741,44.213385,44.206178,1079,545,53.19,318
+HT004,WS03                     ,Andrews Watershed  3                                        ,-122.241949,-122.224022,44.219943,44.208031,1080,471,52.39,313
+HT004,WS06                     ,Andrews Watershed  6                                        ,-122.18351,-122.17755,44.266808,44.261544,1029,878,25.19,165
+HT004,WS07                     ,Andrews Watershed  7                                        ,-122.179209,-122.173875,44.269748,44.264579,1102,918,33.68,158
+HT004,WS08                     ,Andrews Watershed  8                                        ,-122.170793,-122.170793,44.266294,44.265881,1182,962,25.78,165
+HT004,GSWS01                   ,Andrews Watershed  1 Gaging Station                         ,-122.258027,-122.258027,44.207339,44.207339,439,439,24.65,236
+HT004,GSWS02                   ,Andrews Watershed  2 Gaging Station                         ,-122.244876,-122.244876,44.212015,44.212015,545,545,47,21
+HT004,GSWS03                   ,Andrews Watershed  3 Gaging Station                         ,-122.243,-122.243,44.21944,44.21944,471,471,60.29,303
+HT004,GSWS06                   ,Andrews Watershed  6 Gaging Station                         ,-122.180707,-122.180707,44.261508,44.261508,878,878,57.48,203
+HT004,GSWS07                   ,Andrews Watershed  7 Gaging Station                         ,-122.175265,-122.175265,44.264637,44.264637,918,918,61.81,141
+HT004,GSWS08                   ,Andrews Watershed  8 Gaging Station                         ,-122.170793,-122.170793,44.26629426,44.26629426,962,962,37.13,118
+HT004,GSWS10                   ,Andrews Watershed 10 Gaging Station                         ,-122.261056,-122.261056,44.217057,44.217057,461,461,81.81,144
+HT004,GSMACK                   ,Andrews Mack Creek Gaging Station                           ,-122.167447,-122.167447,44.21943621,44.21943621,755,755,11.28,80
+HT004,GSLOOK                   ,Andrews Lookout Creek Gaging Station                        ,-122.257146,-122.257146,44.210126,44.210126,422,422,14.32,192
+HT004,WSMACK                   ,Andrews Mack Creek Watershed                                ,-122.172822,-122.126996,44.220543,44.20148,1626,755,48.41,306
+HT004,WSLOOK                   ,Andrews Lookout Creek Watershed                             ,-122.258793,-122.099527,44.28226,44.201274,1627,421,40.28,267
+HT004,TSLOOK                   ,Lookout Creek upper thermograph site                        ,-122.1216289,-122.1216289,44.22478329,44.22478329,998,998,21.51,20
+HT004,TSMACK                   ,Mack Creek old-growth thermograph site                      ,-122.1654737,-122.1654737,44.21664907,44.21664907,792,792,15.73,53
+HT004,TSMCRA                   ,McRae Creek upper thermograph site                          ,-122.167573,-122.167573,44.25638612,44.25638612,840,840,31.82,328
+HT004,TSQRTZ                   ,Quartz Creek (Blue River tributary) thermograph site        ,-122.301997,-122.301997,44.198319,44.198319,520,520,NA,NA
+HT004,TSLOMA                   ,Lookout and Mack Creek confluence thermograph site          ,-122.1680202,-122.1680202,44.22756413,44.22756413,674,674,20.6,192
+HT004,TSLOMC                   ,Lookout and McRae Creek confluence thermograph site         ,-122.2086344,-122.2086344,44.23298992,44.23298992,552,552,37.05,58
