@@ -55,7 +55,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Prediction Envelopes at Outlet Gage
 
-<p align="center"
+<p align="center">
     <img src="visualization/figures/figure7/figure7.png" width="50%" height="50%">
 </p>
 
