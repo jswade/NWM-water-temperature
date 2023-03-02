@@ -26,8 +26,8 @@ All scripts are written in Python. File references are relative to the GitHub re
 2.  Download and format model input data using scripts in **./data_formatting**. These include:
     -   **/nwm_channels/nwm_channel_download.py**: Retrieves channel parameters for reaches in test catchment.
     -   **/nwm_retrospective/nwm_retrospective_download:py**: Downloads and extracts NWM v2.1 Retrospective forcings and model outputs at model reaches.
-    -   **/riparian_shading/rip_shading_VSI.py**: Estimates riparian shading using gridded canopy cover and a vegetation shading algorithm developed by Kalny et al., 2017.
-    -   **/site_data/hja_at_download.py**: Downloads PRISM air temperature data to estimate groundwater temperatures.
+    -   **/riparian_shading/rip_shading_VSI.py**: Estimates riparian shading using gridded vegetation data and a vegetation shading algorithm developed by Kalny et al., 2017.
+    -   **/site_data/hja_at_download.py**: Downloads PRISM air temperature data used to estimate groundwater temperatures.
     
 3.  Calibrate water temperature model configurations using scripts in **/water_temp_model**. These include:
     -   **nwm_st_model_base.py**: Main model function called during calibration loops.
