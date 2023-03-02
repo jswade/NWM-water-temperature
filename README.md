@@ -64,7 +64,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Water Temperature Model Forulations
 
-<img src="visualization/tables/table1/table1.png" width="50%" height="50%">
+<img src="visualization/tables/table1/table1.png" width="75%" height="75%">
 
 **Table 1.** Water temperature model formulations, tuned parameters, and number of parameters.
 
