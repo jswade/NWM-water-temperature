@@ -32,7 +32,7 @@ All scripts are written in Python. File references are relative to the GitHub re
  
 ### Prediction RMSE Across Model Configurations
 
-<img src="visualization/figures/figure4/figure4.png" width="70%" height="70%">
+<img src="visualization/figures/figure4/figure4.png" width="60%" height="60%">
 
 **Figure 4.** Simulated water temperature RMSE at headwater (Mack Creek) and outlet (Lookout Creek) gages for 5,000 Monte Carlo calibration runs of each model configuration (gray). Top 50 (1st percentile) runs of each model configuration, ranked by weighted RMSE (weighted headwater (25%) and outlet (75%) RMSE), are highlighted.
 
