@@ -46,7 +46,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 
 
-### Prediction Envelopes at Headwater Gage
+### Water Temperature Prediction Envelopes at Headwater Gage
 
 <img src="visualization/figures/figure6/figure6.png" width="50%" height="50%">
 
@@ -54,11 +54,35 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 
 
-### Prediction Envelopes at Outlet Gage
+### Water Temperature Prediction Envelopes at Outlet Gage
 
 <img src="visualization/figures/figure7/figure7.png" width="50%" height="50%">
 
 **Figure 7.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
+
+
+
+### Water Temperature Model Forulations
+
+<img src="visualization/tables/table1/table1.png" width="50%" height="50%">
+
+**Table 1.** Water temperature model formulations, tuned parameters, and number of parameters.
+
+
+
+### Calibrated Parameter Definitions and Ranges
+
+<img src="visualization/tables/table2/table2.png" width="50%" height="50%">
+
+**Table 2.** Definitions and ranges of parameters used in Monte Carlo tuning of models M1-M4.
+
+
+
+### Optimal Parameter Values for Calibrated Runs
+
+<img src="visualization/tables/table3/table3.png" width="50%" height="50%">
+
+**Table 3.** Optimal mean parameter values for top 50 runs of each model (M1-M4).
 
 
 ## Contents
