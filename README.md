@@ -48,6 +48,9 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 **Figure 1.** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
 
+<br/>
+<br/>
+
 ### Modeled Heat Fluxes and Associated NWM Inputs
 
 <img src="visualization/figures/figure2/figure2.png" width="80%" height="80%">
