@@ -16,7 +16,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Modeled Heat Fluxes and Associated NWM Inputs
 
-![NWM Data](visualization/figures/figure2/figure2.png)
+<img src="visualization/figures/figure1/figure1.png" width="80%" height="80%">
 
 **Figure 2.** Primary atmospheric, radiative, and hydrologic heat fluxes represented in the water temperature model. Model data sources fall into four broad categories: NWM gridded forcings, NWM model outputs, NWM channel route link files, and external data unconstrained by the NWM. The color and shape of symbology indicates how each variable contributes to calculated heat fluxes in the model.
  
