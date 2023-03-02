@@ -1,6 +1,6 @@
 # Deterministic modeling of river water temperatures within the National Water Model Framework.
 
-The water temperature of global river networks is an influential control on numerous aspects of water quality and riverine ecology, impacting rates of solute processing, dissolved oxygen content, and habitat viability for aquatic ecosystems. At present, few models exist to predict water temperatures at both a broad spatial extent and at a high spatial (kilometer-scale) and temporal (hourly) resolution. The National Water Model (NWM), a continental-scale (USA) hydrologic model based on WRF-Hydro and implemented by NOAA and NCAR, presents a potential framework for developing a spatially and temporally continuous coupled river temperature model. Leveraging NWM forcings, parameters, and model outputs, we developed a deterministic modeling framework to predict hourly water temperatures along NWM reaches in a single test basin (H.J. Andrews Experimental Forest). By sequentially calibrating and evaluating model configurations of increasing complexity, we achieved predictions with RMSE values under 0.6 degrees C. Our results demonstrate the potential capabilities of a NWM-coupled water temperature model, while also highlighting key areas for future research and development.
+The water temperature of global river networks is an influential control on numerous aspects of water quality and riverine ecology, impacting rates of solute processing, dissolved oxygen content, and habitat viability for aquatic ecosystems. At present, few models exist to predict water temperatures at both a broad spatial extent and at a high spatial (kilometer-scale) and temporal (hourly) resolution. The National Water Model (NWM), a continental-scale (USA) hydrologic model based on WRF-Hydro and implemented by NOAA and NCAR, presents a potential framework for developing a spatially and temporally continuous coupled river temperature model. Leveraging forcings, parameters, and model outputs from the NWM v2.1 Retrospective dataset, we developed a deterministic semi-Lagrangian modeling framework (based on Yearsley, 2009) to predict hourly water temperatures along 35 kilometers of NWM river reaches in a single test basin (H.J. Andrews Experimental Forest) during July 2019. By sequentially calibrating and evaluating model configurations of increasing complexity, we achieved predictions with RMSE values under 0.6 degrees C. Our results demonstrate the potential capabilities of a NWM-coupled water temperature model, while also highlighting key areas for future research and development.
 
 All scripts are written in Python. File references are relative to the GitHub repository main folder and should be changed to match your local directory. Additional information on each step of our analysis is available within individual repository folders.
 
@@ -22,7 +22,14 @@ All scripts are written in Python. File references are relative to the GitHub re
 ## Procedure
 
 1.  Format model input data using scripts in **./data_formatting**. These include:
-    -   
+    -   **/nwm_channels/nwm_channel_download.py**: Retrieves channel parameters for reaches in test catchment.
+    -   **/nwm_retrospective/nwm_retrospective_download:py**: Downloads and extracts NWM v2.1 Retrospective forcings and model outputs at model reaches.
+    -   **/riparian_shading/rip_shading_VSI.py**: Estimates riparian shading using gridded canopy cover and a vegetation shading algorithm developed by Kalny et al., 2017.
+    -   **/site_data/hja_at_download.py**: Downloads PRISM air temperature data to estimate groundwater temperatures.
+    
+2. 
+    
+    
 
 Run **GAGES_StreamTemp_Sites.R** in **./site_id** to identify sites used in the analysis.
 
@@ -107,41 +114,3 @@ Run **GAGES_StreamTemp_Sites.R** in **./site_id** to identify sites used in the 
 <img src="visualization/tables/table3/table3.png" width="50%" height="50%">
 
 **Table 3.** Optimal mean parameter values for top 50 runs of each model (M1-M4).
-
-
-## Contents
-
--   **./nwm_data_download**: Download and extract NWM v2.1 Retrospective data at H.J. Andrews Experimental Forest study catchment
-
-
--
-
-Model Environment/YAML?
-
-## Procedure
-
-
-
-To recreate our analysis, heed the following instructions:
-
-1.  Run **GAGES_StreamTemp_Sites.R** in **./site_id** to identify sites used in the analysis.
-
-2.  Within **./data_download**, run the following scripts:
-
-    -   **./AirTemperature**: **PRISM_data_formatting.R** to extract daily air temperature at each site.
-
-    -   **./Discharge**: **Discharge_DataDownload.R** to download daily USGS discharge data at each site.
-
-    -   **./StreamTemperature**: **ST_DataDownload.R** to download daily USGS ST data at each site.
-
-3.  Run **max_calc.R** and **thermal_sensitivity_calc.R** in **./metric_calculation** to calculate ST metrics. *(Note: Thermal Sensitivity and Slope are used interchangeably in this repository)*
-
-4.  View **./StratifiedSampling** in **./site_classification** to confirm manual-determined stratified sampling groups.
-
-5.  Run **RF_runs_hyperparameter_tuning.R** in **./rf_model_tuning** to optimize *mtry* in RF models.
-
-6.  Run **RF_runs.R and RF_pred_runs.R** *in* **./model_runs** to fit monthly RF models to different combinations of metrics and sites.
-
-7.  Perform Spearman's rank correlation between predictors and metrics using **RF_spearman.R** scripts in **./spearman**.
-
-8.  Generate final figures using **RF_vis_run.R** in **./visualization**. *(Note: Many figures were altered for publication using Adobe Illustrator. Where applicable, Illustrator files are included.)*
