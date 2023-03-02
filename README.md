@@ -8,7 +8,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Model Test Catchment: H.J. Andrews Experimental Forest, OR, USA
 
-<img src="visualization/figures/figure1/figure1.png" width="80%" height="80%">
+<img src="visualization/figures/figure1/figure1.png" width="70%" height="70%">
 
 **Figure 1.** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
 
@@ -32,7 +32,7 @@ All scripts are written in Python. File references are relative to the GitHub re
  
 ### Prediction RMSE Across Model Configurations
 
-<img src="visualization/figures/figure4/figure4.png" width="60%" height="60%">
+<img src="visualization/figures/figure4/figure4.png" width="70%" height="70%">
 
 **Figure 4.** Simulated water temperature RMSE at headwater (Mack Creek) and outlet (Lookout Creek) gages for 5,000 Monte Carlo calibration runs of each model configuration (gray). Top 50 (1st percentile) runs of each model configuration, ranked by weighted RMSE (weighted headwater (25%) and outlet (75%) RMSE), are highlighted.
 
@@ -40,7 +40,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Model Performance Across Error Metrics
 
-![GW Temps](visualization/figures/figure5/figure5.png)
+<img src="visualization/figures/figure5/figure5.png" width="50%" height="50%">
 
 **Figure 5.** Performance of four model configurations at the headwater (Mack Creek) and outlet (Lookout Creek) gages, evaluated across three metrics of model error (RMSE: root mean square error; DMax: daily maxima error; DMin: daily minima error). Error metrics calculated using top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE for each configuration.
 
