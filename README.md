@@ -49,7 +49,6 @@ All scripts are written in Python. File references are relative to the GitHub re
 **Figure 1.** Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
 
 <br/>
-<br/>
 
 ### Modeled Heat Fluxes and Associated NWM Inputs
 
@@ -57,17 +56,23 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 **Figure 2.** Primary atmospheric, radiative, and hydrologic heat fluxes represented in the water temperature model. Model data sources fall into four broad categories: NWM gridded forcings, NWM model outputs, NWM channel route link files, and external data unconstrained by the NWM. The color and shape of symbology indicates how each variable contributes to calculated heat fluxes in the model.
  
-### Approach to Estimating Groundwater Inflow Temperatures
+<br/>
+ 
+### Estimating Groundwater Inflow Temperatures
 
 <img src="visualization/figures/figure3/figure3.png" width="80%" height="80%">
 
 **Figure 3.** Estimated groundwater inflow temperatures for (a) WY2019 and (b) July 2019 study period at the headwaters of Mack Creek for a range of *C<sub>AT-GW<sub>* (air temperature scaling coefficient) values. Values of *C<sub>AT-GW<sub>*, closer to 0 represent relatively deeper sourcing depths while values of *C<sub>AT-GW<sub>* closer to 1 represent relatively shallower sourcing depths.
  
-### Prediction RMSE Across Model Configurations
+ <br/>
+ 
+### Prediction Quality of Model Configurations
 
 <img src="visualization/figures/figure4/figure4.png" width="60%" height="60%">
 
 **Figure 4.** Simulated water temperature RMSE at headwater (Mack Creek) and outlet (Lookout Creek) gages for 5,000 Monte Carlo calibration runs of each model configuration (gray). Top 50 (1st percentile) runs of each model configuration, ranked by weighted RMSE (weighted headwater (25%) and outlet (75%) RMSE), are highlighted.
+
+<br/>
 
 ### Model Performance Across Error Metrics
 
@@ -75,11 +80,15 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 **Figure 5.** Performance of four model configurations at the headwater (Mack Creek) and outlet (Lookout Creek) gages, evaluated across three metrics of model error (RMSE: root mean square error; DMax: daily maxima error; DMin: daily minima error). Error metrics calculated using top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE for each configuration.
 
+<br/>
+
 ### Water Temperature Prediction Envelopes at Headwater Gage
 
 <img src="visualization/figures/figure6/figure6.png" width="50%" height="50%">
 
 **Figure 6.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the headwater gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
+
+<br/>
 
 ### Water Temperature Prediction Envelopes at Outlet Gage
 
@@ -87,11 +96,15 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 **Figure 7.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
 
+<br/>
+
 ### Water Temperature Model Forulations
 
 <img src="visualization/tables/table1/table1.png" width="70%" height="70%">
 
 **Table 1.** Water temperature model formulations, tuned parameters, and number of parameters.
+
+<br/>
 
 ### Calibrated Parameter Definitions and Ranges
 
@@ -99,8 +112,12 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 **Table 2.** Definitions and ranges of parameters used in Monte Carlo tuning of models M1-M4.
 
+<br/>
+
 ### Optimal Parameter Values for Calibrated Runs
 
 <img src="visualization/tables/table3/table3.png" width="50%" height="50%">
 
 **Table 3.** Optimal mean parameter values for top 50 runs of each model (M1-M4).
+
+<br/>
