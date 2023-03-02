@@ -1,36 +1,30 @@
-# Energy balance modeling of river water temperatures within the National Water Model Framework.
+# Deterministic modeling of river water temperatures within the National Water Model Framework.
 
-Abstract/Intro
+The water temperature of global river networks is an influential control on numerous aspects of water quality and riverine ecology, impacting rates of solute processing, dissolved oxygen content, and habitat viability for aquatic ecosystems. At present, few models exist to predict water temperatures at both a broad spatial extent and at a high spatial (kilometer-scale) and temporal (hourly) resolution. The National Water Model (NWM), a continental-scale (USA) hydrologic model based on WRF-Hydro and implemented by NOAA and NCAR, presents a potential framework for developing a spatially and temporally continuous coupled river temperature model. Leveraging NWM forcings, parameters, and model outputs, we developed a deterministic modeling framework to predict hourly water temperatures along NWM reaches in a single test basin (H.J. Andrews Experimental Forest). By sequentially calibrating and evaluating model configurations of increasing complexity, we achieved predictions with RMSE values under 0.6 degrees C. Our results demonstrate the potential capabilities of a NWM-coupled water temperature model, while also highlighting key areas for future research and development.
+
+All scripts are written in Python. File references are relative to the GitHub repository main folder and should be changed to match your local directory. Additional information on each step of our analysis is available within individual repository folders.
+
+## Highlights
+
+### H.J. Andrews Experimental Forest, OR, USA: Model Test Catchment
+
+![Site Map](visualization/figures/figure1/figure1.png)
+
+Location of water temperature gages (‘Headwater’: GSMACK, ‘Outlet’: GSLOOK) with the H.J. Andrews Experimental Forest watershed in relation to channels identified by the National Water Model.
+
 
 ## Contents
 
 -   **./nwm_data_download**: Download and extract NWM v2.1 Retrospective data at H.J. Andrews Experimental Forest study catchment
 
 
--   **./data_raw**: 
-
--   **./data_results**: 
-
--   **./metric_calculation**: 
-
--   **./model_runs**: 
-
--   **./rf_model_tuning**: 
-
--   **./site_classification**: 
-
--   **./site_id**: 
-
--   **./spearman**: 
-
--   **./visualization**: 
-
+-
 
 Model Environment/YAML?
 
 ## Procedure
 
-All code is written in R. File references are relative to the current repository and should be changed to match your local directory. Additional information on each step of our analysis is available within individual repository folders.
+
 
 To recreate our analysis, heed the following instructions:
 
