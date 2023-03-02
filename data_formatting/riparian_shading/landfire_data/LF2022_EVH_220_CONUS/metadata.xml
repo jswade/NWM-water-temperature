@@ -1,0 +1,341 @@
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>LANDFIRE, Earth Resources Observation and Science Center (EROS), U.S. Geological Survey</origin>
+        <pubdate>20220601</pubdate>
+        <title>LANDFIRE 2020 Existing Vegetation Height (EVH) CONUS 2022 Capable </title>
+        <edition>LF 2020</edition>
+        <geoform>raster digital data</geoform>
+        <pubinfo>
+          <pubplace>Sioux Falls, SD</pubplace>
+          <publish>Earth Resources Observation and Science Center (EROS), U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://www.landfire.gov</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>LANDFIRE's (LF) 2020 update (LF 2020) Existing Vegetation Height (EVH) represents the average height of the dominant vegetation for a 30-m cell. EVH is produced separately for tree, shrub, and herbaceous lifeforms using training data depicting the average height weighted by species cover and Existing Vegetation Type (EVT) lifeform. Decision tree models using field reference data, lidar, and Landsat are developed separately for each lifeform, then lifeform specific height class layers are merged along with land cover into a single EVH product. EVH ranges are continuous for herbaceous lifeform ranging from 0.1 to 1 meter with decimeter increments, 0.1 to 3 meters for shrub lifeform, and 1 to 99 meters for tree lifeform. If the height values of each lifeform exceed the continuous value range, they are binned into the appropriate maximum height class. EVH is then reconciled through QA/QC measures to ensure lifeform is synchronized with both Existing Vegetation Cover (EVC) and EVT products. Disturbance events not visible in the source imagery are accounted for by using LF 2020 Annual Disturbance products. LF uses EVH as an input for LF 2020 Fuel Vegetation Cover (FVH).</abstract>
+      <purpose>LANDFIRE 2020 Update (LF 2020) is designed to produce vegetation, disturbance, and fuels products that inform wildland fire and ecological decision systems. LF 2020 is an update to the new base map, LF 2016 Remap (LF Remap), which improved past methodologies and processes to incorporate current satellite imagery, contemporary data sources, and the latest software and hardware technologies. LF 2020 utilizes the most recent and relevant geospatial data available to offer products that reflect current conditions.
+
+LF 2020 products are designed to facilitate national and regional level strategic fire and resource management planning and reporting of management activities. The principal purposes of the products include providing, 1) national level, landscape scale geospatial products to support fire and fuels management planning, and 2) consistent fuels products to support fire planning, analysis, and budgeting to evaluate fire management alternatives. 
+
+Products are created at a 30 meter raster; however, the applicability of products varies by location and specific use. LF products were designed to support 1) national (all states) strategic planning, 2) regional (single large states or groups of smaller states), and 3) strategic/tactical planning for large sub regional landscapes and Fire Management Units (FMUs) (such as significant portions of states or multiple federal administrative entities). The applicability of LF products to support fire and land management planning on smaller areas will vary by product, location, and specific use. Managers and planners must evaluate LF products according to the scale and requirements specific to their needs.
+</purpose>
+      <supplinf>This product has 2022 capable fuels functionality. Beginning in the LF 2020 update all CONUS products are created with a 90km buffer into both Canada and Mexico, and LF 2020 AK products feature a 90km buffer into Canada. 
+
+
+</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>2020</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>Annually </update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-122.2988</westbc>
+        <eastbc>-122.0944</eastbc>
+        <northbc>44.2869</northbc>
+        <southbc>44.1892</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>ISO 19115 Topic Category</themekt>
+        <themekey>imageryBaseMapsEarthCover</themekey>
+        <themekey>biota</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>fires</themekey>
+        <themekey>hazard preparedness</themekey>
+        <themekey>remote sensing</themekey>
+        <themekey>image collections</themekey>
+        <themekey>geospatial datasets</themekey>
+        <themekey>geographic information systems</themekey>
+      </theme>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>raster digital data </themekey>
+        <themekey>Existing Vegetation Height</themekey>
+        <themekey>EVH</themekey>
+        <themekey>U.S. Geological Survey (USGS)</themekey>
+        <themekey>U.S. Forest Service (USFS)</themekey>
+        <themekey>LANDFIRE 2020</themekey>
+        <themekey>LF 2020</themekey>
+      </theme>
+      <place>
+        <placekt>Common geographic areas</placekt>
+        <placekey>US</placekey>
+        <placekey>CONUS</placekey>
+        <placekey>United States</placekey>
+        <placekey>Continental U.S.</placekey>
+        <placekey>Conterminous United States</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>None </useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>LANDFIRE, Earth Resources Observation and Science Center (EROS), U.S. Geological Survey</cntorg>
+        </cntorgp>
+        <cntpos>Customer Service Representative</cntpos>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>47914 252nd Street</address>
+          <city>Sioux Falls</city>
+          <state>SD</state>
+          <postal>57198</postal>
+          <country>U.S.</country>
+        </cntaddr>
+        <cntvoice>605-594-6151</cntvoice>
+        <cntemail>helpdesk@landfire.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>These products were created by the LF team at USGS EROS, Sioux Falls, SD. Refer to the contact information throughout this metadata to contact the LF team.</datacred>
+    <secinfo>
+<secsys>None in place</secsys>
+<secclass>Unclassified</secclass>
+<sechandl>If there is ever doubt, contact the LF Help Desk at helpdesk@landfire.gov</sechandl>
+</secinfo>
+    <native>Microsoft Windows 10; ESRI ArcCatalog 10.7.1</native>
+    <crossref>
+      <citeinfo>
+        <origin>USGS Advanced Research Computing (ARC)</origin>
+        <pubdate>2021</pubdate>
+        <title>USGS Denali Supercomputer: U.S. Geological Survey</title>
+        <geoform>publication</geoform>
+        <onlink>https://www.usgs.gov/advanced-research-computing/usgs-denali-supercomputer</onlink>
+        <onlink>https://www.usgs.gov/advanced-research-computing</onlink>
+      </citeinfo>
+    </crossref>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>Products were tested to ensure that each attribute is represented consistently across all data sets. Attributes were not validated against in person observations. </attraccr>
+    </attracc>
+    <logic>The products were pixel "truth" tested for consistency of land or water characteristics across all products. </logic>
+    <complete>Products were formally tested to ensure that valid data was produced for all pixels. Each product was then validated and tested for duplicates, omissions, and errors.</complete>
+    <lineage>
+      <procstep>
+        <procdesc>Beginning with the new base map of LF 2016 Remap (LF Remap), products were created using recent advances in image compositing, tiling algorithms, and faster computing hardware to ensure that LF products remained relevant. LF Remap leveraged the Landsat archive, lidar data, and user contributed field plot data compiled into the LF Reference Database (LFRDB), to create new vegetation products. Reference resources included, but were not limited to, Forest Inventory and Analysis (FIA) program plot data (USFS https://fia.fs.fed.us/), Landsat Dynamic Surface Water Extent [(DSWE) USGS https://www.usgs.gov/landsat-missions], the National Land Cover Database [(NLCD) USGS https://www.mrlc.gov/data], and National Agricultural Statistics Service [(NASS) USDA - https://www.nass.usda.gov/]. 
+
+For LF 2020 reference resources included, but were not limited to, NASS agricultural class layers, NLCD developed and roads classes, TIGER road polylines [https://tigerweb.geo.census.gov/tigerwebmain/TIGERweb_apps.html], 3D Elevation Program Digital Elevation Model [(3DEP DEM) USGS https://www.usgs.gov/3d-elevation-program], Monitoring Trends in Burn Severity [(MTBS) USGS https://mtbs.gov/], Burned Area Reflectance Classification [(BARC) USFS and USGS] and Rapid Assessment of Vegetation Condition after Wildfire [(RAVG) https://burnseverity.cr.usgs.gov/ravg/] and North American Land Change Monitoring System [(NALCMS) https://www.mrlc.gov/data/north-american-land-change-monitoring-system] for the 90km buffer area.
+To read more about LF reference resources go to https://www.landfire.gov/reference.php. Information about LF 2020 product testing is available by request or via the website at https://www.landfire.gov.
+</procdesc>
+        <procdate>20220601</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Raster</direct>
+    <rastinfo>
+      <rasttype>Grid Cell</rasttype>
+      <rowcount>20729</rowcount>
+      <colcount>24853</colcount>
+    </rastinfo>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>Albers Conical Equal Area</mapprojn>
+          <albers>
+            <stdparll>29.5</stdparll>
+            <stdparll>45.5</stdparll>
+            <longcm>-96.0</longcm>
+            <latprjo>23.0</latprjo>
+            <feast>0</feast>
+            <fnorth>0</fnorth>
+          </albers>
+        </mapproj>
+        <planci>
+          <plance>row and column</plance>
+          <coordrep>
+            <absres>30</absres>
+            <ordres>30</ordres>
+          </coordrep>
+          <plandu>meters</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>North American Datum of 1983 (NAD 83)</horizdn>
+        <ellips>Geodetic Reference System 1980</ellips>
+        <semiaxis>6378137.000000</semiaxis>
+        <denflat>298.257222</denflat>
+      </geodetic>
+    </horizsys>
+    <vertdef />
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>EVH</enttypl>
+        <enttypd>LF 2020 EVH attributes spreadsheet.</enttypd>
+        <enttypds>LF 2020</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>VALUE</attrlabl>
+        <attrdef>Value representing height (m).</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>-9999</edomv>
+            <edomvd>NoData</edomvd>
+            <edomvds>LF 2020</edomvds>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <rdom>
+            <rdommin>11</rdommin>
+            <rdommax>310</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>CLASSNAMES</attrlabl>
+        <attrdef>Existing Vegetation Height. Tree, shrub, and herb height values 101 to 310.</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><udom>101 to 199 - Tree heights 1 meter to 99 meters or greater.
+201 to 230 - Shrub heights - 1 meter to 3 meters or greater.
+301 to 310 - Herb heights - 0.1 meter to 1 meter or greater.
+</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>R</attrlabl>
+        <attrdef>Red color value/255</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0</rdommin>
+            <rdommax>255</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>G</attrlabl>
+        <attrdef>Green color value/255</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0</rdommin>
+            <rdommax>255</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>B</attrlabl>
+        <attrdef>Blue color value/255</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0</rdommin>
+            <rdommax>255</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>RED</attrlabl>
+        <attrdef>Red color value. </attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0.0</rdommin>
+            <rdommax>1.0</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>GREEN</attrlabl>
+        <attrdef>Green color value.</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0.0</rdommin>
+            <rdommax>1.0</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>BLUE</attrlabl>
+        <attrdef>Blue color value.</attrdef>
+        <attrdefs>LF 2020</attrdefs>
+        <attrdomv><rdom>
+            <rdommin>0.0</rdommin>
+            <rdommax>1.0</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <overview>
+      <eaover>LANDFIRE (LF) 2020 Existing Vegetation Height (EVH) CONUS. An Attribute Table is included with each product download as a .csv and embedded in the metadata. The  Attribute Data Dictionary (ADD) can be found at https://www.landfire.gov/.</eaover>
+      <eadetcit>https://www.landfire.gov/evh.php</eadetcit>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>LANDFIRE, Earth Resources Observation and Science Center (EROS), U.S. Geological Survey</cntorg>
+        </cntorgp>
+        <cntpos>Customer Service Representative</cntpos>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>47914 252nd Street</address>
+          <city>Sioux Falls</city>
+          <state>SD</state>
+          <postal>57198</postal>
+          <country>U.S.</country>
+        </cntaddr>
+        <cntvoice>605-594-6151</cntvoice>
+        <cntemail>helpdesk@landfire.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>This product is reproduced from geospatial information prepared by the U.S. Department of the Interior (DOI) USGS EROS. By removing the contents of this package or taking receipt of these files via electronic file transfer methods, you understand that the data stored on this media can be updated at any time. Represented features may not be in an accurate geographic location. USGS EROS makes no expressed or implied warranty, including warranty of merchantability and fitness, with respect to the character, function, or capabilities of the data or their appropriateness for any user's purposes. USGS EROS reserves the right to correct, update, modify, or replace this geospatial information without notification.
+
+Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty.</distliab>
+    <stdorder>
+      <digform><digtinfo>
+<formname>ARCG</formname>
+<formverd>20220601</formverd> 
+<formspec>LF 2020</formspec>
+</digtinfo>
+<digtopt><onlinopt><computer><networka><networkr>https://www.landfire.gov</networkr></networka></computer></onlinopt></digtopt></digform>
+      <fees>none</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20220601</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>LANDFIRE, Earth Resources Observation and Science Center (EROS), U.S. Geological Survey</cntorg>
+        </cntorgp>
+        <cntpos>Customer Service Representative</cntpos>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>47914 252nd Street</address>
+          <city>Sioux Falls</city>
+          <state>SD</state>
+          <postal>57198</postal>
+          <country>U.S.</country>
+        </cntaddr>
+        <cntvoice>605-594-6151</cntvoice>
+        <cntemail>helpdesk@landfire.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+    <metsi>
+<metscs>None</metscs>
+<metsc>Unclassified</metsc>
+<metshd>None</metshd>
+</metsi>
+  </metainfo>
+</metadata>
