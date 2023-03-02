@@ -72,7 +72,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Calibrated Parameter Definitions and Ranges
 
-<img src="visualization/tables/table2/table2.png" width="50%" height="50%">
+<img src="visualization/tables/table2/table2.png" width="55%" height="55%">
 
 **Table 2.** Definitions and ranges of parameters used in Monte Carlo tuning of models M1-M4.
 
