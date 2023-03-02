@@ -12,7 +12,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 -   **/presentations**: In-depth presentation on motivations, model development, and future outlook for NWM water temperature modeling.
 
--   **/python_environment**: Yml file used to generate Python Conda environment for model scripts.
+-   **/python_environment**: Yml file used to generate Python environment for model scripts.
 
 -   **/visualization**: Figures and tables illustrating modeling outcomes.
 
@@ -21,37 +21,24 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ## Procedure
 
-1.  Format model input data using scripts in **./data_formatting**. These include:
+1.  Create and activate Python environment using **/python_environment/nwm_st_env.yml**.
+
+2.  Download and format model input data using scripts in **./data_formatting**. These include:
     -   **/nwm_channels/nwm_channel_download.py**: Retrieves channel parameters for reaches in test catchment.
     -   **/nwm_retrospective/nwm_retrospective_download:py**: Downloads and extracts NWM v2.1 Retrospective forcings and model outputs at model reaches.
     -   **/riparian_shading/rip_shading_VSI.py**: Estimates riparian shading using gridded canopy cover and a vegetation shading algorithm developed by Kalny et al., 2017.
     -   **/site_data/hja_at_download.py**: Downloads PRISM air temperature data to estimate groundwater temperatures.
     
-2. 
+3.  Calibrate water temperature model configurations using scripts in **/water_temp_model**. These include:
+    -   **nwm_st_model_base.py**: Main model function called during calibration loops.
+    -   **nwm_st_model_runs.py**: Calibrates four model configurations using Monte Carlo parameter sampling.
     
+4.  Results of calibration, including error metrics and water temperature predictions, are saved to **/model_calibration**.
+
+5.  Visualize outcomes of model calibration using scripts in **/visualization**. These include:
+    -   **nwm_st_visualization**: Generates figures related to model predictions and error.
+    -   **gw_temp_visualization**: Generates figures related to groundwater inflow temperatures.
     
-
-Run **GAGES_StreamTemp_Sites.R** in **./site_id** to identify sites used in the analysis.
-
-2.  Within **./data_download**, run the following scripts:
-
-    -   **./AirTemperature**: **PRISM_data_formatting.R** to extract daily air temperature at each site.
-
-    -   **./Discharge**: **Discharge_DataDownload.R** to download daily USGS discharge data at each site.
-
-    -   **./StreamTemperature**: **ST_DataDownload.R** to download daily USGS ST data at each site.
-
-3.  Run **max_calc.R** and **thermal_sensitivity_calc.R** in **./metric_calculation** to calculate ST metrics. *(Note: Thermal Sensitivity and Slope are used interchangeably in this repository)*
-
-4.  View **./StratifiedSampling** in **./site_classification** to confirm manual-determined stratified sampling groups.
-
-5.  Run **RF_runs_hyperparameter_tuning.R** in **./rf_model_tuning** to optimize *mtry* in RF models.
-
-6.  Run **RF_runs.R and RF_pred_runs.R** *in* **./model_runs** to fit monthly RF models to different combinations of metrics and sites.
-
-7.  Perform Spearman's rank correlation between predictors and metrics using **RF_spearman.R** scripts in **./spearman**.
-
-8.  Generate final figures using **RF_vis_run.R** in **./visualization**. *(Note: Many figures were altered for publication using Adobe Illustrator. Where applicable, Illustrator files are included.)*
 
 ## Highlights
 
