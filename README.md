@@ -64,7 +64,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Water Temperature Model Forulations
 
-<img src="visualization/tables/table1/table1.png" width="75%" height="75%">
+<img src="visualization/tables/table1/table1.png" width="70%" height="70%">
 
 **Table 1.** Water temperature model formulations, tuned parameters, and number of parameters.
 
@@ -72,7 +72,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Calibrated Parameter Definitions and Ranges
 
-<img src="visualization/tables/table2/table2.png" width="50%" height="50%">
+<img src="visualization/tables/table2/table2.png" width="70%" height="70%">
 
 **Table 2.** Definitions and ranges of parameters used in Monte Carlo tuning of models M1-M4.
 
@@ -80,7 +80,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 ### Optimal Parameter Values for Calibrated Runs
 
-<img src="visualization/tables/table3/table3.png" width="50%" height="50%">
+<img src="visualization/tables/table3/table3.png" width="70%" height="70%">
 
 **Table 3.** Optimal mean parameter values for top 50 runs of each model (M1-M4).
 
