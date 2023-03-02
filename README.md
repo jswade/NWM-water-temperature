@@ -27,7 +27,38 @@ All scripts are written in Python. File references are relative to the GitHub re
 ![GW Temps](visualization/figures/figure3/figure3.png)
 
 **Figure 3.** Estimated groundwater inflow temperatures for (a) WY2019 and (b) July 2019 study period at the headwaters of Mack Creek for a range of *C<sub>AT-GW<sub>* (air temperature scaling coefficient) values. Values of *C<sub>AT-GW<sub>*, closer to 0 represent relatively deeper sourcing depths while values of *C<sub>AT-GW<sub>* closer to 1 represent relatively shallower sourcing depths.
+ 
+ 
+ 
+### Prediction RMSE Across Model Configurations
 
+![GW Temps](visualization/figures/figure4/figure4.png)
+
+**Figure 4.** Simulated water temperature RMSE at headwater (Mack Creek) and outlet (Lookout Creek) gages for 5,000 Monte Carlo calibration runs of each model configuration (gray). Top 50 (1st percentile) runs of each model configuration, ranked by weighted RMSE (weighted headwater (25%) and outlet (75%) RMSE), are highlighted.
+
+
+
+### Model Performance Across Error Metrics
+
+![GW Temps](visualization/figures/figure5/figure5.png)
+
+**Figure 5.** Performance of four model configurations at the headwater (Mack Creek) and outlet (Lookout Creek) gages, evaluated across three metrics of model error (RMSE: root mean square error; DMax: daily maxima error; DMin: daily minima error). Error metrics calculated using top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE for each configuration.
+
+
+
+### Prediction Envelopes at Headwater Gage
+
+![GW Temps](visualization/figures/figure6/figure6.png)
+
+**Figure 6.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the headwater gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
+
+
+
+### Prediction Envelopes at Outlet Gage
+
+![GW Temps](visualization/figures/figure7/figure7.png)
+
+**Figure 7.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
 
 
 ## Contents
