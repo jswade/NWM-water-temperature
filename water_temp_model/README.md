@@ -1,7 +1,7 @@
 # Water Temperature Model
 
 -   **nwm_st_model_base.py**: Main model function used to calculate heat fluxes and simulate water temperatures along NWM reaches.
--   **nwm_st_model_runs.py**: Script used to perform model calibration, calling **nwm_st_model_base.py** function.
+-   **nwm_st_model_runs.py**: Script used to perform model calibration, which calls the **nwm_st_model_base.py** function.
 
 ## Model Description
 The water temperature model presented here is a semi-Lagrangian advection model based on the work of Yearsley, 2009. The model functions by quantifying heat fluxes into and out of the stream using National Water Model data and calculating the resultant changes in water temperature in relation to an upstream boundary condition. Modeled heat fluxes include solar radiation, longwave radiation, latent heat, sensible heat, groundwater inflow, surface runoff, and hyporheic exchange. The model simulates temperatures using 1-km reach segments coincident with National Water Model/NHD reaches at an hourly time step within the H.J. Andrews test catchment. Upstream boundary conditions of each tributary was equal to the temperature of groundwater, which was estimated using a calibrated approach that buffered and lagged daily mean air temperatures.
