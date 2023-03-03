@@ -25,6 +25,10 @@ We provide both final figure PNGs and the Adobe Illustrator files used to modify
 
     -   **./figure7**: Envelopes of well-calibrated water temperature simulations at the outlet gage.
 
+    -   **./model_formulation**: Conceptual depiction of water temperature modeling framework
+
+    -   **./model_calibration**: Conceptual depiction of model configurations (M1-M4)
+
 ## Tables
 
 -   **./tables**: Folder containing the following tables:
