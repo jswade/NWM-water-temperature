@@ -1,6 +1,7 @@
 # Python Environment
 
-Required Python packages to execute water temperature model scripts.
+The .yml file contains the required Python packages to execute the water temperature model scripts.
+<br/>
 <br/>
 To create a Conda environment with the required packages from the .yml file:
 ```console
