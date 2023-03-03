@@ -56,20 +56,20 @@ mod_time_pst_clip = mod_time_pst[48:]
 
 # Read model runs from CSV
 mc_df_M1 = pd.read_csv('../NWM-water-temperature/model_calibration/M1_calibration.csv')        
-M1_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_Fa.csv')        
-M1_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_Ma.csv') 
+M1_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_headwater.csv')        
+M1_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_outlet.csv') 
 
 mc_df_M2 = pd.read_csv('../NWM-water-temperature/model_calibration/M2_calibration.csv')        
-M2_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_Fa.csv')        
-M2_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_Ma.csv') 
+M2_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_headwater.csv')        
+M2_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_outlet.csv') 
 
 mc_df_M3 = pd.read_csv('../NWM-water-temperature/model_calibration/M3_calibration.csv')        
-M3_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_Fa.csv')        
-M3_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_Ma.csv') 
+M3_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_headwater.csv')        
+M3_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_outlet.csv') 
 
 mc_df_M4 = pd.read_csv('../NWM-water-temperature/model_calibration/M4_calibration.csv')        
-M4_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_Fa.csv')        
-M4_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_Ma.csv') 
+M4_st_Fa = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_headwater.csv')        
+M4_st_Ma = pd.read_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_outlet.csv') 
 
 # Remove first 48 hours from modeled temperatures
 M1_st_Fa = M1_st_Fa[48:]

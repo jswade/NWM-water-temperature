@@ -276,19 +276,19 @@ M4, M4_st_Ma, M4_st_Fa = mod_runs(mc_df_M4,'M4')
 
 # Write error metrics and predicted water temperatures at two gages to csv
 mc_df_M1.to_csv('../NWM-water-temperature/model_calibration/M1_calibration.csv', index=False)        
-M1_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_Fa.csv', index=False)        
-M1_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_Ma.csv', index=False) 
+M1_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_headwater.csv', index=False)        
+M1_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_outlet.csv', index=False) 
 
 M2.to_csv('../NWM-water-temperature/model_calibration/M2_calibration.csv', index=False)        
-M2_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_Fa.csv', index=False)        
-M2_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_Ma.csv', index=False) 
+M2_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_headwater.csv', index=False)        
+M2_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M2_st_outlet.csv', index=False) 
 
 M3.to_csv('../NWM-water-temperature/model_calibration/M3_calibration.csv', index=False)        
-M3_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_Fa.csv', index=False)        
-M3_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_Ma.csv', index=False)
+M3_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_headwater.csv', index=False)        
+M3_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M3_st_outlet.csv', index=False)
 
 M4.to_csv('../NWM-water-temperature/model_calibration/M4_calibration.csv', index=False)        
-M4_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_Fa.csv', index=False)        
-M4_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_Ma.csv', index=False) 
+M4_st_Fa.to_csv('../NWM-water-temperature/model_calibration/st_runs/M4_st_headwater.csv', index=False)        
+M4_st_Ma.to_csv('../NWM-water-temperature/model_calibration/st_runs/M1_st_outlet.csv', index=False) 
 
 
