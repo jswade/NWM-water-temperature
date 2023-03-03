@@ -98,7 +98,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 <br/>
 
-### Water Temperature Model Forulations
+### Water Temperature Model Configurations
 
 <img src="visualization/tables/table1/table1.png" width="70%" height="70%">
 
