@@ -7,5 +7,6 @@ To create a Conda environment with the required packages from the .yml file, run
 ```console
 cd python_environment
 conda env create -f nwm_st_env.yml
+conda activate nwm_st_env
 ```
 
