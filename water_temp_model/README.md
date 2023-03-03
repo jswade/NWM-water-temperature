@@ -16,3 +16,5 @@ The four model configurations were tuned using uniform Monte Carlo sampling of u
 
 <img src="https://github.com/jswade/NWM-water-temperature/blob/main/visualization/figures/model_calibration/model_calibration.png" width="70%" height="70%">
 
+## References
+Yearsley, J. R. (2009). A semi-Lagrangian water temperature model for advection-dominated river systems. Water Resources Research, 45(12). https://doi.org/10.1029/2008WR007629
