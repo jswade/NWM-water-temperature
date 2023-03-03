@@ -11,6 +11,7 @@ The water temperature model presented here is a semi-Lagrangian advection model 
 ## Model Calibration
 Four model configurations of sequentially increasing complexity (M1, M2, M3, M4) were tested to evaluate tradeoffs between performance and efficiency. Progressing from M1 to M4, the model represents additional processes by adding degrees of freedom in calibration.
 <br/>
+<br/>
 The four model configurations were tuned using uniform Monte Carlo sampling of uncertain parameters evaluated across 5000 model runs of each configuration. From these 5000 runs, the top 1% of model runs (50 runs) ranked by a weighted error of RMSE at the headwater and outlet gage were used to assess the peak potential performance of each configuration.
 
 <img src="https://github.com/jswade/NWM-water-temperature/blob/main/visualization/figures/model_calibration/model_calibration.png" width="70%" height="70%">
