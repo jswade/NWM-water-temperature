@@ -1,6 +1,6 @@
 # Deterministic modeling of river water temperatures within the National Water Model Framework.
 
-The water temperature of global river networks is an influential control on numerous aspects of water quality and riverine ecology, impacting rates of solute processing, dissolved oxygen content, and habitat viability for aquatic ecosystems. At present, few models exist to predict water temperatures at both a broad spatial extent and at a high spatial (kilometer-scale) and temporal (hourly) resolution. The National Water Model (NWM), a continental-scale (USA) hydrologic model based on WRF-Hydro and implemented by NOAA and NCAR, presents a potential framework for developing a spatially and temporally continuous coupled river temperature model. Leveraging forcings, parameters, and model outputs from the NWM v2.1 Retrospective dataset, we developed a deterministic semi-Lagrangian modeling framework (based on Yearsley, 2009) to predict hourly water temperatures along 35 kilometers of NWM river reaches in a single test basin (H.J. Andrews Experimental Forest) during July 2019. By sequentially calibrating and evaluating model configurations of increasing complexity, we achieved predictions with RMSE values under 0.6&deg;C. Our results demonstrate the potential capabilities of a NWM-coupled water temperature model, while also highlighting key areas for future research and development.
+The water temperature of global river networks is an influential control on numerous aspects of water quality and riverine ecology, impacting rates of solute processing, dissolved oxygen content, and habitat viability for aquatic ecosystems. At present, few models exist to predict water temperatures at both a broad spatial extent and at a high spatial (kilometer-scale) and temporal (hourly) resolution. The National Water Model (NWM), a continental-scale (USA) hydrologic model based on WRF-Hydro and implemented by NOAA and NCAR, presents a potential framework for developing a spatially and temporally continuous coupled river temperature model. Leveraging forcings, parameters, and model outputs from the NWM v2.1 Retrospective dataset, we developed a deterministic semi-Lagrangian modeling framework (based on Yearsley, 2009) to predict hourly water temperatures along 35 kilometers of NWM river reaches in a single test basin (H.J. Andrews Experimental Forest) during July 2019. By sequentially calibrating and validating model configurations of increasing complexity, we achieved predictions with RMSE values under 0.6&deg;C. Our results demonstrate the potential capabilities of a NWM-coupled water temperature model, while also highlighting key areas for future research and development.
 
 All scripts are written in Python. File references are relative to the GitHub repository main folder and should be changed to match your local directory. Additional information on each step of our analysis is available within individual repository folders.
 
@@ -9,6 +9,8 @@ All scripts are written in Python. File references are relative to the GitHub re
 -   **/data_formatting**: Downloads, extracts, and formats NWM v2.1 Retrospective data at H.J. Andrews Experimental Forest study catchment.
 
 -   **/model_calibration**: Results from Monte Carlo calibration of four model configurations.
+
+-   **/model_validation**: Results from valdation of top calibrated runs.
 
 -   **/presentations**: In-depth presentation on motivations, model development, and future outlook for NWM water temperature modeling.
 
@@ -31,9 +33,12 @@ All scripts are written in Python. File references are relative to the GitHub re
     
 3.  Calibrate water temperature model configurations using scripts in **/water_temp_model**. These include:
     -   **nwm_st_model_base.py**: Main model function called during calibration loops.
-    -   **nwm_st_model_runs.py**: Calibrates four model configurations using Monte Carlo parameter sampling.
+    -   **nwm_st_model_cal_runs.py**: Calibrates four model configurations using Monte Carlo parameter sampling.
+    -   **nwm_st_model_val_runs.py**: Validates four model configurations using top calibrated parameter sets.
     
 4.  Results of calibration, including error metrics and water temperature predictions, are saved to **/model_calibration**.
+
+5.  Results of validation, including error metrics and water temperature predictions, are saved to **/model_validation**.
 
 5.  Visualize outcomes of model calibration using scripts in **/visualization**. These include:
     -   **nwm_st_visualization**: Generates figures related to model predictions and error.
@@ -70,7 +75,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 <img src="visualization/figures/figure4/figure4.png" width="60%" height="60%">
 
-**Figure 4.** Simulated water temperature RMSE at headwater (Mack Creek) and outlet (Lookout Creek) gages for 5,000 Monte Carlo calibration runs of each model configuration (gray). Top 50 (1st percentile) runs of each model configuration, ranked by weighted RMSE (weighted headwater (25%) and outlet (75%) RMSE), are highlighted.
+**Figure 4.** Simulated water temperature prediction RMSE (°C) at headwater (Mack Creek) and outlet (Lookout Creek) gages. For the calibration (Cal.) of each model configuration, the top 1% of runs, ranked by RMSEw (weighted headwater (25%) and outlet (75%) RMSE), are highlighted as colored points amongst all calibration runs (represented by gray points). The validation (Val.) performance of the top 1% of calibrated parameter sets is represented by colored triangles.
 
 <br/>
 
@@ -78,7 +83,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 <img src="visualization/figures/figure5/figure5.png" width="40%" height="40%">
 
-**Figure 5.** Performance of four model configurations at the headwater (Mack Creek) and outlet (Lookout Creek) gages, evaluated across three metrics of model error (RMSE: root mean square error; DMax: daily maxima error; DMin: daily minima error). Error metrics calculated using top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE for each configuration.
+**Figure 5.** Performance of four model configurations at the headwater (Mack Creek) and outlet (Lookout Creek) gages, evaluated across three metrics of model error (RMSE: root mean square error; DMax: daily maxima error; DMin: daily minima error). Paired boxplots show error metrics during calibration (left) and validation (right) periods for each configuration. Error metrics calculated using parameter sets from the top 1% of calibration runs, ranked by RMSEw (weighted headwater (25%) and outlet (75%) RMSE).
 
 <br/>
 
@@ -86,15 +91,14 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 <img src="visualization/figures/figure6/figure6.png" width="50%" height="50%">
 
-**Figure 6.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the headwater gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
-
+**Figure 6.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the headwater gage across model configurations M1, M2, M3, and M4 for the top 50 calibration runs (1st percentile), ranked by weighted headwater and outlet RMSE (RMSEw). Predictions displayed during a four-week calibration period and a two-week validation period, separated by a 48-hour spin-up period for validation.
 <br/>
 
 ### Water Temperature Prediction Envelopes at Outlet Gage
 
 <img src="visualization/figures/figure7/figure7.png" width="50%" height="50%">
 
-**Figure 7.** Observed headwater temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 runs (1st percentile) ranked by weighted headwater and outlet RMSE.
+**Figure 7.** Observed outlet temperatures (black) and 5/95th confidence envelope of water temperature predictions at the outlet gage across model configurations M1, M2, M3, and M4 for the top 50 calibration runs (1st percentile), ranked by weighted headwater and outlet RMSE (RMSEw). Predictions displayed during a four-week calibration period and a two-week validation period, separated by a 48-hour spin-up period for validation.
 
 <br/>
 
@@ -118,6 +122,6 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 <img src="visualization/tables/table3/table3.png" width="50%" height="50%">
 
-**Table 3.** Optimal mean parameter values for top 50 runs of each model (M1-M4).
+**Table 3.** Optimal mean parameter values for the top 50 calibration runs of each model (M1-M4), ranked by RMSEw.
 
 <br/>

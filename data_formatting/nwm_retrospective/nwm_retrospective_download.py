@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Download and extract NWM v2.1 Retrospective Data from AWS within H.J. Andrews test catchment
-for July 2019 study period.
+for July 2019 calibration period and August 2019 validation period.
 
 # NWM v2.1 Retrospective available on AWS at:
 # https://registry.opendata.aws/nwm-archive/
@@ -24,7 +24,7 @@ from botocore.config import Config
 ## Define model reaches: see /data_formatting/NWM_channels ##
 
 # Load HJA channel dataframe
-hja_df = pd.read_csv('../NWM-water-temperature/data_formatting/NWM_channels/formatted_channels/hja_channel.csv')
+hja_df = pd.read_csv('../NWM-water-temperature/data_formatting/nwm_channels/formatted_channels/hja_channel.csv')
 
 # Find number of reach segments
 n = len(hja_df['feature_id'])
@@ -92,50 +92,6 @@ for k in range(0,len(hja_x)):
 
 ## AWS Formatting and File Retrieval ##
 
-# Define start and end datetime for NWM file download (NOTE: THESE TIMES ARE IN UTC)
-startdate = '2019-07-01T00:00:00'
-#startdate = '2019-06014T00:00:00' # Enable to generate extended dataset (for air temperature moving window approach to groundwater inflow temperature)
-enddate = '2019-07-31T23:00:00'
-
-# Create datetime array of hourly steps between start and end date in UTC
-time_range = pd.date_range(startdate, enddate, freq='H',tz="UTC")
-
-# Find number of hours in record
-n_hr = len(time_range)
-
-# Format time_range to match AWS http format
-yr_list = time_range.strftime('%Y').values.astype('str')
-# CHRTOUT files include hour and minute
-chrtout_dt_list = time_range.strftime('%Y%m%d%H%M').values.astype('str')
-# LDASIN files include only hour
-ldasin_dt_list = time_range.strftime('%Y%m%d%H').values.astype('str')
-
-# Preallocate arrays to store AWS keys
-chrtout_keys = []
-ldasin_keys = []
-
-# Assemble array of URLs for CHRTOUT and LDASIN files
-for i in range(0,len(yr_list)):
-
-    chrtout_keys.append("model_output/" + yr_list[i] + "/" + chrtout_dt_list[i] + ".CHRTOUT_DOMAIN1.comp")
-
-    ldasin_keys.append("forcing/" + yr_list[i] + "/" + ldasin_dt_list[i] + ".LDASIN_DOMAIN1")
-
-
-# Initialize dataframe to store data at each reach segment
-# Number of rows = # of reaches * # of files
-hja_chrtout_data = pd.DataFrame(data={'feature_id':np.tile(reach_pt['feature_id'],(n_hr)),
-                                'nwm_time':np.zeros(n*n_hr), 'streamflow':np.zeros(n*n_hr),
-                                'velocity':np.zeros(n*n_hr),'qSfcLatRunoff':np.zeros(n*n_hr), 
-                                'qBucket':np.zeros(n*n_hr)})
-
-hja_ldasin_data = pd.DataFrame(data={'feature_id':np.tile(reach_pt['feature_id'],(n_hr)),
-                                'nwm_time':np.zeros(n*n_hr),'U2D':np.zeros(n*n_hr),
-                                'V2D':np.zeros(n*n_hr), 'LWDOWN':np.zeros(n*n_hr),
-                                'T2D':np.zeros(n*n_hr), 'Q2D':np.zeros(n*n_hr),
-                                'PSFC':np.zeros(n*n_hr),'SWDOWN':np.zeros(n*n_hr)})
-
-
 # ## AWS Access ##
 # # See https://github.com/HamedAlemo/visualize-goes16/blob/master/visualize_GOES16_from_AWS.ipynb
 
@@ -145,106 +101,199 @@ bucket_name = 'noaa-nwm-retrospective-2-1-pds'
 # Initialize s3 client.
 s3_client = boto3.client('s3', config=Config(signature_version=UNSIGNED))
 
-# Retrieve and store data from CHRTOUT files
-for i in range(0,len(chrtout_keys)):
-    
-    print(i)
-    
-    ## AWS Retrieval ##
-    # Credit: Hamed Alemo, https://github.com/HamedAlemo/visualize-goes16/blob/master/visualize_GOES16_from_AWS.ipynb
+# Calibration (1 month of data)
+# Define start and end datetime for NWM file download (NOTE: THESE TIMES ARE IN UTC)
+startdate_cal = '2019-07-01T00:00:00'
+#startdate_cal = '2019-06-14T00:00:00' # Enable to generate extended dataset (for air temperature moving window approach to groundwater inflow temperature)
+enddate_cal = '2019-07-31T23:00:00'
 
-    # Index key based on datetime
-    key = chrtout_keys[i]
-    
-    # Get file from AWS Bucket
-    resp = requests.get(f'https://{bucket_name}.s3.amazonaws.com/{key}')
-    
-    # Get file name of retrieved file
-    file_name = key.split('/')[-1]
-    
-    # Initialize NWM dataset into memory
-    nc4_ds = netCDF4.Dataset(file_name, memory = resp.content)
-    
-    # Store netCDF for reading and writing
-    store = xr.backends.NetCDF4DataStore(nc4_ds)
-    
-    # Open netCDF file using xarray
-    DS = xr.open_dataset(store)
-    
-    # Convert dataset to dataframe
-    chan_df = DS.to_dataframe()
+# Validation (2 weeks of data)
+# Define start and end datetime for NWM file download (NOTE: THESE TIMES ARE IN UTC)
+startdate_val = '2019-08-01T00:00:00'
+#startdate_val = '2019-07-15T00:00:00' # Enable to generate extended dataset (for air temperature moving window approach to groundwater inflow temperature)
+enddate_val = '2019-08-14T23:00:00'
 
-    ## Subsetting NWM files using feature_ids of test basin ##
-    # Slice chan_df by feature_ids
-    hja_chan_df = chan_df.loc[:,:,chan_feats]
+# Create function to retrieve AWS files from selected dates
+def data_download(startdate, enddate):
+    
+    # Create datetime array of hourly steps between start and end date in UTC
+    time_range = pd.date_range(startdate, enddate, freq='H',tz="UTC")
+    
+    # Find number of hours in record
+    n_hr = len(time_range)
+    
+    # Format time_range to match AWS http format
+    yr_list = time_range.strftime('%Y').values.astype('str')
+    # CHRTOUT files include hour and minute
+    chrtout_dt_list = time_range.strftime('%Y%m%d%H%M').values.astype('str')
+    # LDASIN files include only hour
+    ldasin_dt_list = time_range.strftime('%Y%m%d%H').values.astype('str')
+    
+    # Preallocate arrays to store AWS keys
+    chrtout_keys = []
+    ldasin_keys = []
+    
+    # Assemble array of URLs for CHRTOUT and LDASIN files
+    for i in range(0,len(yr_list)):
+    
+        chrtout_keys.append("model_output/" + yr_list[i] + "/" + chrtout_dt_list[i] + ".CHRTOUT_DOMAIN1.comp")
+    
+        ldasin_keys.append("forcing/" + yr_list[i] + "/" + ldasin_dt_list[i] + ".LDASIN_DOMAIN1")
+    
+    
+    # Initialize dataframe to store data at each reach segment
+    # Number of rows = # of reaches * # of files
+    hja_chrtout_data = pd.DataFrame(data={'feature_id':np.tile(reach_pt['feature_id'],(n_hr)),
+                                    'nwm_time':np.zeros(n*n_hr), 'streamflow':np.zeros(n*n_hr),
+                                    'velocity':np.zeros(n*n_hr),'qSfcLatRunoff':np.zeros(n*n_hr), 
+                                    'qBucket':np.zeros(n*n_hr)})
+    
+    hja_ldasin_data = pd.DataFrame(data={'feature_id':np.tile(reach_pt['feature_id'],(n_hr)),
+                                    'nwm_time':np.zeros(n*n_hr),'U2D':np.zeros(n*n_hr),
+                                    'V2D':np.zeros(n*n_hr), 'LWDOWN':np.zeros(n*n_hr),
+                                    'T2D':np.zeros(n*n_hr), 'Q2D':np.zeros(n*n_hr),
+                                    'PSFC':np.zeros(n*n_hr),'SWDOWN':np.zeros(n*n_hr)})
+    
 
-    # Add channel data to dataframe (indices correspond to j)
-    hja_chrtout_data.loc[(11*i):(11*i+10),'nwm_time'] = hja_chan_df.index.get_level_values('time').values
-    hja_chrtout_data.loc[(11*i):(11*i+10),'streamflow'] = np.array(hja_chan_df['streamflow'][:])
-    hja_chrtout_data.loc[(11*i):(11*i+10),'velocity'] = np.array(hja_chan_df['velocity'][:])
-    hja_chrtout_data.loc[(11*i):(11*i+10),'qSfcLatRunoff'] = np.array(hja_chan_df['qSfcLatRunoff'][:])
-    hja_chrtout_data.loc[(11*i):(11*i+10),'qBucket'] = np.array(hja_chan_df['qBucket'][:])
+    # Retrieve and store data from CHRTOUT files
+    for i in range(0,len(chrtout_keys)):
+        
+        print(i)
+        
+        ## AWS Retrieval ##
+        # Credit: Hamed Alemo, https://github.com/HamedAlemo/visualize-goes16/blob/master/visualize_GOES16_from_AWS.ipynb
     
-hja_chrtout_data.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_chrtout.csv", index=False)    
+        # Index key based on datetime
+        key = chrtout_keys[i]
+        
+        # Get file from AWS Bucket
+        resp = requests.get(f'https://{bucket_name}.s3.amazonaws.com/{key}')
+        
+        # Get file name of retrieved file
+        file_name = key.split('/')[-1]
+        
+        # Initialize NWM dataset into memory
+        nc4_ds = netCDF4.Dataset(file_name, memory = resp.content)
+        
+        # Store netCDF for reading and writing
+        store = xr.backends.NetCDF4DataStore(nc4_ds)
+        
+        # Open netCDF file using xarray
+        DS = xr.open_dataset(store)
+        
+        # Convert dataset to dataframe
+        chan_df = DS.to_dataframe()
+    
+        ## Subsetting NWM files using feature_ids of test basin ##
+        # Slice chan_df by feature_ids
+        hja_chan_df = chan_df.loc[:,:,chan_feats]
+    
+        # Add channel data to dataframe (indices correspond to j)
+        hja_chrtout_data.loc[(11*i):(11*i+10),'nwm_time'] = hja_chan_df.index.get_level_values('time').values
+        hja_chrtout_data.loc[(11*i):(11*i+10),'streamflow'] = np.array(hja_chan_df['streamflow'][:])
+        hja_chrtout_data.loc[(11*i):(11*i+10),'velocity'] = np.array(hja_chan_df['velocity'][:])
+        hja_chrtout_data.loc[(11*i):(11*i+10),'qSfcLatRunoff'] = np.array(hja_chan_df['qSfcLatRunoff'][:])
+        hja_chrtout_data.loc[(11*i):(11*i+10),'qBucket'] = np.array(hja_chan_df['qBucket'][:])
     
 
-# Retrieve and store data from LDASIN files
-for i in range(0,len(ldasin_keys)):
-    
-    print(i)
-    
-    i = 0
-    
-    ## AWS Retrieval ##
-    # Credit: Hamed Alemo, https://github.com/HamedAlemo/visualize-goes16/blob/master/visualize_GOES16_from_AWS.ipynb
+    # Retrieve and store data from LDASIN files
+    for i in range(0,len(ldasin_keys)):
+        
+        print(i)
 
-    # Index key based on datetime
-    key = ldasin_keys[i]
+        ## AWS Retrieval ##
+        # Credit: Hamed Alemo, https://github.com/HamedAlemo/visualize-goes16/blob/master/visualize_GOES16_from_AWS.ipynb
     
-    # Get file from AWS Bucket
-    resp = requests.get(f'https://{bucket_name}.s3.amazonaws.com/{key}')
-    
-    # Get file name of retrieved file
-    file_name = key.split('/')[-1]
-    
-    # Initialize NWM dataset into memory
-    nc4_ds = netCDF4.Dataset(file_name, memory = resp.content)
-    
-    # Store netCDF for reading and writing
-    store = xr.backends.NetCDF4DataStore(nc4_ds)
-    
-    # Open netCDF file using xarray
-    forcing_DS = xr.open_dataset(store)
-    
-    # Index forcing netCDF using x and y indices of HJA reaches
-    forcing_hja = forcing_DS.isel(west_east=xr.DataArray(x_ind), south_north=xr.DataArray(y_ind))
-    
-    # Add channel data to dataframe (indices correspond to j)
-    hja_ldasin_data.loc[(11*i):(11*i+10),'nwm_time'] = str(forcing_hja.Times.values)[2:21]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'U2D'] = forcing_hja.U2D.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'V2D'] = forcing_hja.V2D.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'LWDOWN'] = forcing_hja.LWDOWN.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'T2D'] = forcing_hja.T2D.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'Q2D'] = forcing_hja.Q2D.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'PSFC'] = forcing_hja.PSFC.values[0]
-    hja_ldasin_data.loc[(11*i):(11*i+10),'SWDOWN'] = forcing_hja.SWDOWN.values[0]
+        # Index key based on datetime
+        key = ldasin_keys[i]
+        
+        # Get file from AWS Bucket
+        resp = requests.get(f'https://{bucket_name}.s3.amazonaws.com/{key}')
+        
+        # Get file name of retrieved file
+        file_name = key.split('/')[-1]
+        
+        # Initialize NWM dataset into memory
+        nc4_ds = netCDF4.Dataset(file_name, memory = resp.content)
+        
+        # Store netCDF for reading and writing
+        store = xr.backends.NetCDF4DataStore(nc4_ds)
+        
+        # Open netCDF file using xarray
+        forcing_DS = xr.open_dataset(store)
+        
+        # Index forcing netCDF using x and y indices of HJA reaches
+        forcing_hja = forcing_DS.isel(west_east=xr.DataArray(x_ind), south_north=xr.DataArray(y_ind))
+        
+        # Add channel data to dataframe (indices correspond to j)
+        hja_ldasin_data.loc[(11*i):(11*i+10),'nwm_time'] = str(forcing_hja.Times.values)[2:21]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'U2D'] = forcing_hja.U2D.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'V2D'] = forcing_hja.V2D.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'LWDOWN'] = forcing_hja.LWDOWN.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'T2D'] = forcing_hja.T2D.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'Q2D'] = forcing_hja.Q2D.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'PSFC'] = forcing_hja.PSFC.values[0]
+        hja_ldasin_data.loc[(11*i):(11*i+10),'SWDOWN'] = forcing_hja.SWDOWN.values[0]
 
-hja_ldasin_data.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin.csv", index=False)    
+    return(hja_chrtout_data, hja_ldasin_data)
+
+
+## Download and save calibration files
+data_calibration = data_download(startdate_cal,enddate_cal)
+
+# Extract ldasin and chrtout calibration files
+hja_chrtout_cal = data_calibration[0]
+hja_ldasin_cal = data_calibration[1]
+
+# Write calibration files
+hja_ldasin_cal.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_cal.csv", index=False)    
+hja_chrtout_cal.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_chrtout_cal.csv", index=False)    
+    
+# Write calibration files (enable for extended dataset download)
+# hja_ldasin_cal.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_extend_cal.csv", index=False)    
+
+# # Read in data if already downloaded
+# hja_ldasin_data = pd.read_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_cal.csv")    
+# hja_chrtout_data = pd.read_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_chrtout_cal.csv")
 
 ## Combine data download files into single file
-
-# Read in data if already downloaded
-hja_ldasin_data = pd.read_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin.csv")    
-hja_chrtout_data = pd.read_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_chrtout.csv")
-
 # Combine dataframes
-hja_data = hja_chrtout_data.join(hja_ldasin_data.iloc[:,2:9])
+hja_data_cal = hja_chrtout_cal.join(hja_ldasin_cal.iloc[:,2:9])
 
 # Inner join segment IDs to feature_ids in data
-hja_data = pd.merge(hja_data, hja_df_seg, on='feature_id', how='inner')
+hja_data_cal = pd.merge(hja_data_cal, hja_df_seg, on='feature_id', how='inner')
 
 # Sort by hja_id
-hja_data = hja_data.sort_values(by=['hja_id','nwm_time'])
+hja_data_cal = hja_data_cal.sort_values(['hja_id','nwm_time'])
 
 #### Write dataframe to file ####
-hja_data.to_csv('../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_data.csv', index=False)
+hja_data_cal.to_csv('../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_data_cal.csv', index=False)
+
+
+## Download and save validation files
+data_validation = data_download(startdate_val,enddate_val)
+
+# Extract ldasin and chrtout validation files
+hja_chrtout_val = data_validation[0]
+hja_ldasin_val = data_validation[1]
+
+# Write validation files
+hja_ldasin_val.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_val.csv", index=False)    
+hja_chrtout_val.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_chrtout_val.csv", index=False)    
+    
+# Write calibration files (enable for extended dataset download)
+# hja_ldasin_val.to_csv("../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_extend_val.csv", index=False)    
+
+
+## Combine data download files into single file
+# Combine dataframes
+hja_data_val = hja_chrtout_val.join(hja_ldasin_val.iloc[:,2:9])
+
+# Inner join segment IDs to feature_ids in data
+hja_data_val = pd.merge(hja_data_val, hja_df_seg, on='feature_id', how='inner')
+
+# Sort by hja_id
+hja_data_val = hja_data_val.sort_values(['hja_id','nwm_time'])
+
+#### Write dataframe to file ####
+hja_data_val.to_csv('../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_data_val.csv', index=False)

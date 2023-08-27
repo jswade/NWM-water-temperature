@@ -2,19 +2,20 @@
 # -*- coding: utf-8 -*-
 """
 
-Model function called by nwm_st_model_runs.py
+Model function called by nwm_st_model_cal_runs.py and nwm_st_model_val_runs.py
 
-Simulates water temperatures in the H.J. Andrews catchment during July 2019
+Simulates water temperatures in the H.J. Andrews catchment during specified time period
 
-Model simulates one selected river reach at a time. To model the full network, the function must be executed multiple times
+Model simulates one selected river reach at a time. To model the full network, the function must be executed multiple times from headwater reaches to outlet
 
 """
 
 # Create function to model temperatures along selected river reach
 # Takes in values for segment ID, riparian shading  and T_t0 of the same length as segment ID
 
-def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, Fd=None, Sa=None):
-        
+def nwm_st(segment, node_space, time_step,mc_sample,mode, Fa=None, Fb=None, Fc=None, Fd=None, Sa=None):
+    
+    
     # Inputs:
     # segment = selected reach for model run (Ma, Sa, Fa, Fb, Fc, Fc: arbitrary identifiers, see /NWM-water-temperature/data_formatting/NWM_channels/formatted_channels/hja_channels_diagram.png)
     # node_space = desired model reach spacing, meters
@@ -97,6 +98,17 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
     
     ## Create function for calculating radiative heat fluxes at a timestep over all nodes ##
     def rad_flux(sw_in, lw_in, at_in, st_in, spec_h_in, v_wind, shade, pa):
+        
+        
+        # sw_in = sw_in[:,5]
+        # lw_in = lw_in[:,5]
+        # at_in = at[:,5]
+        # st_in = T_sim[:,5]
+        # spec_h_in = spec_h[:,5]
+        # v_wind = wind[:,5]
+        # shade = rip_shade
+        # pa = air_press[:,5]
+        
     
         ## Shortwave Radiation ##
         # Does not account for diffusive solar radiation (see Westhoff, 2007)
@@ -127,10 +139,10 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
         rh_in = 100*(ea/es) # Units: percent
         
         # For RH > 97%, Bowen's ratio approaches infinity, resulting in implausible sensible heat
-        # If RH > 97%, reduce RH to equal 97% to prevent anomalous sensible heat
+        # # If RH > 97%, reduce RH to equal 97% to prevent anomalous sensible heat
         if rh_in > 97: 
             rh_in = 97
-        
+
         ## Atmospheric LW ##
         lw_atmos = 0.96 * lw_in  * (1-shade)
     
@@ -283,17 +295,16 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
         hyp_lag = mc_sample[8]
         hyp_frac1 = mc_sample[9]
         hyp_frac2 = mc_sample[10]
-        hyp_frac3 = mc_sample[11]
-
-
+        hyp_frac3 = mc_sample[11]  
+    
     # Load model forcing and streamflow data (see nwm_retrospective_download.py)
-    hja_data = pd.read_csv('../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_data.csv')
+    hja_data = pd.read_csv('../NWM-water-temperature/data_formatting/nwm_retrospective/retrospective_files/retro_v21_data_'+mode+'.csv')
 
     # Load extended LDASIN forcing data for June (used to calculate GW temperature during beginning on July)
-    ldasin_extend = pd.read_csv('../NWM-water-temperature/data_formatting/NWM_retrospective/retrospective_files/retro_v21_ldasin_extend.csv')
+    ldasin_extend = pd.read_csv('../NWM-water-temperature/data_formatting/nwm_retrospective/retrospective_files/retro_v21_ldasin_extend_'+mode+'.csv')
 
     # Load model channel data (see nwm_channel_download.py)
-    hja_df = pd.read_csv('../NWM-water-temperature/data_formatting/NWM_channels/formatted_channels/hja_channel.csv')
+    hja_df = pd.read_csv('../NWM-water-temperature/data_formatting/nwm_channels/formatted_channels/hja_channel.csv')
 
     # Filter hja_df by selected model reach
     hja_rch = hja_df[hja_df['segment'] == segment]
@@ -450,7 +461,7 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
     ## RIPARIAN SHADING ##
     
     # Read Kalny et al., 2017 Vegetation Shading Index values by reach
-    rip_shade = pd.read_csv('../NWM-water-temperature/data_formatting/Riparian_shading/shading_output/vsi_'+segment+'.csv')
+    rip_shade = pd.read_csv('../NWM-water-temperature/data_formatting/riparian_shading/shading_output/vsi_'+segment+'.csv')
     rip_shade = np.array(rip_shade)
 
     ## Surface/Subsurface DISCHARGE ##
@@ -608,7 +619,7 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
     at_day = at_df.resample('D').mean()
     at_extend_day = at_extend_df.resample('D').mean()
     
-    # Calculate 7-day rolling average of air temperatures
+    # Calculate X-day rolling average of air temperatures
     window = int(window)
     window_date = []
     moving_at = []
@@ -638,10 +649,10 @@ def nwm_st(segment, node_space, time_step,mc_sample, Fa=None, Fb=None, Fc=None, 
 
     # Adjust window_date to align with model time
     window_date[0] = pd.to_datetime(mod_time_pst[0])
-    # Add final timestep to align with model time (model end time in UTC)
-    window_date = np.append(window_date,[np.datetime64('2019-07-31 16:00:00')])
+    # Add final timestep to align with model time (model end time in PST)
+    window_date = np.append(window_date,[window_date[-1] + np.timedelta64(16,'h')])
     # Repeat last row of daily means in moving_at
-    moving_at = np.vstack([moving_at, moving_at[31,:]])
+    moving_at = np.vstack([moving_at, moving_at[len(moving_at)-1,:]])
     
     # Resample moving at to hourly time step
     moving_at_df = pd.DataFrame(moving_at)
