@@ -1,6 +1,13 @@
 # NWM Channels
 
 -   **nwm_channel_download.py**: Downloads and formats NWM channel channel data located within H.J. Andrews Experimental Forest.
+    - This code requires that the user download two files and place them in the proper directories:
+    - Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
+    - Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+
+    - Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
+    - Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+
 -   **/raw_data**: Data used to derive channel locations and parameters, including:
     -   **/NWM_parameters_v2.1**: NWM parameter files related to gridded and river channel features. (Source: https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/NWM_parameters/NWM_parameter_files.tar.gz)
     -   **/NWM_v2.1_channel_hydrofabric**: Geometry objects defining the location and identity of NWM reaches. (Source: https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz)
