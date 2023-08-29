@@ -46,6 +46,9 @@ hja_aoi = hja_aoi.to_crs(epsg=4269)
 
 
 ## Load and format routelink file
+# Please download RouteLink_CONUS.nc at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/NWM_parameters/NWM_parameter_files.tar.gz
+# Copy downloaded RouteLink_CONUS.nc file into proper repository folder (see file path below)
+
 # Set filepath of RouteLink
 routelink_fp = "../NWM-water-temperature/data_formatting/NWM_channels/raw_data/NWM_parameters_v2.1/RouteLink_CONUS.nc"
 
@@ -71,6 +74,9 @@ rl_hja= rl_hja.sort_values(by=['link'])
 
 ## Load and format hydrofabric file
 # Set filepath of hydrofabric geodatabase
+# Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
+# Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+
 hydrofab_fp = "../NWM-water-temperature/data_formatting/NWM_channels/raw_data/NWM_v2.1_channel_hydrofabric/nwm_v2_1_hydrofabric.gdb"
 
 # List layers in hydrofabric file
