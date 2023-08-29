@@ -20,8 +20,8 @@ of the National Water Model. Based on NHDPlus v2.
 
 
 # This code requires that the user download two files and place them in the proper directories:
-    ## Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
-    ## Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+    ## Please download RouteLink_CONUS.nc at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/NWM_parameters/NWM_parameter_files.tar.gz
+    ## Copy downloaded RouteLink_CONUS.nc file into proper repository folder (see file path below)
 
     ## Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
     ## Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
