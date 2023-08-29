@@ -18,6 +18,15 @@ of the National Water Model. Based on NHDPlus v2.
 # Geometry objects defining location and identification of NWM reaches
 # https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
 
+
+# This code requires that the user download two files and place them in the proper directories:
+    ## Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
+    ## Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+
+    ## Please download NWM_v2.1_channel_hydrofabric at https://www.nohrsc.noaa.gov/pub/staff/keicher/NWM_live/web/data_tools/NWM_channel_hydrofabric.tar.gz
+    ## Copy downloaded NWM_v2.1_channel_hydrofabric file into proper repository folder (see file path below)
+
+
 """
 
 # Import Python packages
