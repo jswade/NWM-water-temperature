@@ -40,7 +40,7 @@ All scripts are written in Python. File references are relative to the GitHub re
 
 5.  Results of validation, including error metrics and water temperature predictions, are saved to **/model_validation**.
 
-5.  Visualize outcomes of model calibration using scripts in **/visualization**. These include:
+6.  Visualize outcomes of model calibration using scripts in **/visualization**. These include:
     -   **nwm_st_visualization**: Generates figures related to model predictions and error.
     -   **gw_temp_visualization**: Generates figures related to groundwater inflow temperatures.
     
